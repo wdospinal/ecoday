@@ -1,5 +1,5 @@
-import {scale} from 'src/utils';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
+import { scale } from 'src/utils';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import {
   StyleSheet,
@@ -9,14 +9,14 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import FirebaseAuth from '@react-native-firebase/auth';
 
 interface HeaderProps {}
 
 const Header = (props: HeaderProps) => {
   const insets = useSafeAreaInsets();
-  const navigation = useNavigation<NavigationProp<RootNavigatorParmsList>>();
+  const navigation = useNavigation<NavigationProp<RootNavigatorParamsList>>();
   return (
     <View
       style={[
@@ -50,7 +50,7 @@ const Header = (props: HeaderProps) => {
           bottom: scale(10),
         }}>
         <Image
-          style={[styles.icon, {marginRight: scale(18)}]}
+          style={[styles.icon, { marginRight: scale(18) }]}
           source={require('src/assets/icons/IGTVIcon.png')}
         />
 

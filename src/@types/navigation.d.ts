@@ -1,6 +1,6 @@
-import {RouteProp} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import type {ParamListBase} from '@react-navigation/routers';
+import { RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { ParamListBase } from '@react-navigation/routers';
 
 type ScreenRouteProp<T extends ParamListBase, D extends keyof T> = RouteProp<
   T,
