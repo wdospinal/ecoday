@@ -1,17 +1,6 @@
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 
-interface SearchScreenProps {}
-
-const SearchScreen = (props: SearchScreenProps) => {
-  return (
-    <View style={styles.container}>
-      <Text>SearchScreen</Text>
-    </View>
-  );
-};
-
-export default SearchScreen;
+import { StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,3 +9,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+const SearchScreen = (): JSX.Element => {
+  return (
+    <View style={styles.container}>
+      <Text>SearchScreen</Text>
+    </View>
+  );
+};
+
+export default SearchScreen;

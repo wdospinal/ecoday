@@ -46,10 +46,10 @@ const RootNavigator = (): JSX.Element | null => {
   };
   return (
     <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Questions" component={Questions} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Products" component={ProductsScreen} />
       <Stack.Screen name="Product" component={ProductScreen} />
-      <Stack.Screen name="Questions" component={Questions} />
       <Stack.Screen name="Rewards" component={RewardsScreen} />
       <Stack.Screen name="Voluntary" component={VoluntaryScreen} />
       <Stack.Screen name="VoluntaryForm" component={VoluntaryFormScreen} />

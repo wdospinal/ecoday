@@ -1,22 +1,42 @@
-import { scale } from 'src/utils';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+/* eslint-disable global-require */
 import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  Image,
-  View,
-  Pressable,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import FirebaseAuth from '@react-native-firebase/auth';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-interface HeaderProps {}
+import { scale } from 'src/utils';
 
-const Header = (props: HeaderProps) => {
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: scale(6),
+    borderBottomColor: '#CCC',
+    borderBottomWidth: 1,
+  },
+  icon: {
+    width: scale(24),
+    height: scale(22),
+    resizeMode: 'contain',
+  },
+  logo: {
+    width: scale(105),
+    height: scale(28),
+    resizeMode: 'contain',
+  },
+});
+
+const Header = (): JSX.Element => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp<RootNavigatorParamsList>>();
+
+  const navigateReward = React.useCallback(() => {
+    navigation.navigate('Rewards');
+  }, [navigation]);
   return (
     <View
       style={[
@@ -31,7 +51,7 @@ const Header = (props: HeaderProps) => {
           left: scale(12),
           bottom: scale(12),
         }}
-        onPress={() => navigation.navigate('StoryCreator')}>
+        onPress={navigateReward}>
         <Image
           style={[styles.icon]}
           source={require('src/assets/icons/CameraIcon.png')}
@@ -57,7 +77,7 @@ const Header = (props: HeaderProps) => {
         <Pressable onPress={FirebaseAuth().signOut}>
           <Image
             style={styles.icon}
-            source={require('src/assets/icons/MessangerIcon.png')}
+            source={require('src/assets/icons/MenssangerIcon.png')}
           />
         </Pressable>
       </View>
@@ -66,25 +86,3 @@ const Header = (props: HeaderProps) => {
 };
 
 export default Header;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FAFAFA',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: scale(6),
-    borderBottomColor: '#CCC',
-    borderBottomWidth: 1,
-  },
-  icon: {
-    width: scale(24),
-    height: scale(22),
-    resizeMode: 'contain',
-  },
-  logo: {
-    width: scale(105),
-    height: scale(28),
-    resizeMode: 'contain',
-  },
-});

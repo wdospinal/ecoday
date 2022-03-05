@@ -1,11 +1,12 @@
+/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
+
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -59,46 +60,6 @@ const STORIES = [
 
 const GRADIENT_COLORS = ['#FBAA47', '#D91A46', '#A60F93'];
 
-interface StoriesSliderProps {}
-
-const Story = ({
-  username,
-  avatarUrl,
-}: {
-  username: string;
-  avatarUrl: string;
-}) => {
-  return (
-    <TouchableOpacity style={styles.storyContainer}>
-      <LinearGradient colors={GRADIENT_COLORS} style={styles.gradientContainer}>
-        <Image style={styles.image} source={{uri: avatarUrl}} />
-      </LinearGradient>
-
-      <Text style={styles.username}>{username}</Text>
-    </TouchableOpacity>
-  );
-};
-
-const StoriesSlider = (props: StoriesSliderProps) => {
-  return (
-    <ScrollView
-      style={styles.container}
-      bounces={false}
-      showsHorizontalScrollIndicator={false}
-      horizontal>
-      <Story
-        username="Your Story"
-        avatarUrl="https://sebastiangarcia.dev/images/avatar.jpg"
-      />
-      {STORIES.map((e, i) => {
-        return <Story key={`STORY_${i}`} {...e} />;
-      })}
-    </ScrollView>
-  );
-};
-
-export default StoriesSlider;
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 9,
@@ -130,3 +91,41 @@ const styles = StyleSheet.create({
     color: '#262626',
   },
 });
+
+const Story = ({
+  username,
+  avatarUrl,
+}: {
+  username: string;
+  avatarUrl: string;
+}) => {
+  return (
+    <TouchableOpacity style={styles.storyContainer}>
+      <LinearGradient colors={GRADIENT_COLORS} style={styles.gradientContainer}>
+        <Image style={styles.image} source={{ uri: avatarUrl }} />
+      </LinearGradient>
+
+      <Text style={styles.username}>{username}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const StoriesSlider = (): JSX.Element => {
+  return (
+    <ScrollView
+      style={styles.container}
+      bounces={false}
+      showsHorizontalScrollIndicator={false}
+      horizontal>
+      <Story
+        username="Your Story"
+        avatarUrl="https://sebastiangarcia.dev/images/avatar.jpg"
+      />
+      {STORIES.map((e, i) => {
+        return <Story key={`STORY_${i}`} {...e} />;
+      })}
+    </ScrollView>
+  );
+};
+
+export default StoriesSlider;

@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 

@@ -4,9 +4,6 @@ import * as React from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { ScreenProps } from 'src/@types/navigation';
-
-type HomeScreenProps = ScreenProps<MainNavigationParamsList, 'Home'>;
 
 const styles = StyleSheet.create({
   container: {
@@ -76,9 +73,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = (props: HomeScreenProps) => {
-  console.log(props);
-
+const HomeScreen = (): JSX.Element => {
   const navigation = useNavigation<NavigationProp<RootNavigatorParamsList>>();
   const navigateReward = React.useCallback(() => {
     navigation.navigate('Rewards');

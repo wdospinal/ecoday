@@ -1,13 +1,10 @@
-import {scale} from 'src/utils';
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable global-require */
 import * as React from 'react';
-import {
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   interpolateColor,
   useAnimatedScrollHandler,
@@ -15,7 +12,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-interface PostProps {}
+import { scale } from 'src/utils';
 
 const POST: Post = {
   user: {
@@ -63,160 +60,6 @@ const POST: Post = {
     name: 'Tokyo, Japan',
   },
 };
-
-const Post = (props: Post) => {
-  const scrollX = useSharedValue(0);
-
-  const handleScroll = useAnimatedScrollHandler(event => {
-    scrollX.value = event.contentOffset.x;
-  });
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={{flexDirection: 'row'}}>
-          <Image style={styles.avatar} source={{uri: POST.user.avatarUrl}} />
-          <View style={{justifyContent: 'center'}}>
-            <View style={styles.nameContainer}>
-              <Text style={styles.name}>{POST.user.username} </Text>
-              {POST.user.isVerified && (
-                <Image
-                  style={styles.verifyIcon}
-                  source={require('src/assets/icons/OfficialAccountIcon.png')}
-                />
-              )}
-            </View>
-            <Text
-              style={{
-                fontSize: 11,
-              }}>
-              {POST.place.name}
-            </Text>
-          </View>
-        </View>
-        <Pressable style={styles.optionsButton}>
-          <Image
-            style={styles.optionsIcon}
-            source={require('src/assets/icons/OptionsIcon.png')}
-          />
-        </Pressable>
-      </View>
-
-      <View style={styles.mediaViewer}>
-        <Animated.ScrollView
-          bounces={false}
-          onScroll={handleScroll}
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          pagingEnabled
-          horizontal>
-          {POST.media.map((e, i) => (
-            <Image
-              key={`MEDIA_${i}`}
-              style={{
-                width: scale(e.size.width),
-                height: scale(e.size.height),
-              }}
-              source={{uri: e.url}}
-            />
-          ))}
-        </Animated.ScrollView>
-
-        <View style={styles.dots}>
-          {POST.media.map((e, i) => {
-            const _width = scale(e.size.width);
-            const inputRange = [(i - 1) * _width, i * _width, (i + 1) * _width];
-            const animatedStyles = useAnimatedStyle(() => {
-              return {
-                backgroundColor: interpolateColor(scrollX.value, inputRange, [
-                  '#CCC',
-                  '#3897F0',
-                  '#CCC',
-                ]),
-              };
-            });
-            return (
-              <Animated.View
-                key={`MEDIA_${i}`}
-                style={[styles.dot, animatedStyles]}
-              />
-            );
-          })}
-        </View>
-      </View>
-
-      <View style={{paddingHorizontal: 15}}>
-        <View style={styles.actionsBar}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image
-              style={{
-                width: scale(24),
-                height: scale(21),
-                resizeMode: 'contain',
-                marginRight: scale(17),
-              }}
-              source={require('src/assets/icons/LikeIcon.png')}
-            />
-            <Image
-              style={{
-                width: scale(22),
-                height: scale(23),
-                resizeMode: 'contain',
-                marginRight: scale(17),
-              }}
-              source={require('src/assets/icons/CommentIcon.png')}
-            />
-            <Image
-              style={{
-                width: scale(23),
-                height: scale(20),
-                resizeMode: 'contain',
-              }}
-              source={require('src/assets/icons/MessangerIcon.png')}
-            />
-          </View>
-
-          <Image
-            style={{
-              width: scale(21),
-              height: scale(24),
-              resizeMode: 'contain',
-            }}
-            source={require('src/assets/icons/SaveIcon.png')}
-          />
-        </View>
-
-        <View style={styles.likesContainer}>
-          <Image
-            style={styles.likeImage}
-            source={{
-              uri: 'https://images.unsplash.com/photo-1645504812848-29c2ebd5cd54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-            }}
-          />
-          <Text style={{fontSize: scale(13), color: '#262626'}}>
-            Liked by <Text style={{fontWeight: 'bold'}}>craig_love</Text> and{' '}
-            <Text style={{fontWeight: 'bold'}}>44,686 others</Text>
-          </Text>
-        </View>
-
-        <Text style={styles.description}>
-          <Text style={styles.descriptionUsername}>{POST.user.username} </Text>
-          {POST.description}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: scale(12),
-            color: 'rgba(0,0,0,0.4)',
-          }}>
-          2d ago
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-export default Post;
 
 const styles = StyleSheet.create({
   container: {},
@@ -271,7 +114,7 @@ const styles = StyleSheet.create({
     letterSpacing: scale(-0.07),
     marginBottom: scale(8),
   },
-  descriptionUsername: {fontWeight: 'bold', letterSpacing: scale(-0.1)},
+  descriptionUsername: { fontWeight: 'bold', letterSpacing: scale(-0.1) },
   likeImage: {
     width: scale(17),
     height: scale(17),
@@ -294,5 +137,162 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.15)',
     marginHorizontal: scale(2),
   },
-  likesContainer: {flexDirection: 'row', alignItems: 'center', marginBottom: 5},
+  likesContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
 });
+const Post = (): JSX.Element => {
+  const scrollX = useSharedValue(0);
+
+  const handleScroll = useAnimatedScrollHandler(event => {
+    scrollX.value = event.contentOffset.x;
+  });
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.headerContainer}>
+        <View style={{ flexDirection: 'row' }}>
+          <Image style={styles.avatar} source={{ uri: POST.user.avatarUrl }} />
+          <View style={{ justifyContent: 'center' }}>
+            <View style={styles.nameContainer}>
+              <Text style={styles.name}>{POST.user.username} </Text>
+              {POST.user.isVerified && (
+                <Image
+                  style={styles.verifyIcon}
+                  source={require('src/assets/icons/OfficialAccountIcon.png')}
+                />
+              )}
+            </View>
+            <Text
+              style={{
+                fontSize: 11,
+              }}>
+              {POST.place.name}
+            </Text>
+          </View>
+        </View>
+        <Pressable style={styles.optionsButton}>
+          <Image
+            style={styles.optionsIcon}
+            source={require('src/assets/icons/OptionsIcon.png')}
+          />
+        </Pressable>
+      </View>
+
+      <View style={styles.mediaViewer}>
+        <Animated.ScrollView
+          bounces={false}
+          onScroll={handleScroll}
+          showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={16}
+          pagingEnabled
+          horizontal>
+          {POST.media.map((e, i) => (
+            <Image
+              key={`MEDIA_${i}`}
+              style={{
+                width: scale(e.size.width),
+                height: scale(e.size.height),
+              }}
+              source={{ uri: e.url }}
+            />
+          ))}
+        </Animated.ScrollView>
+
+        <View style={styles.dots}>
+          {POST.media.map((e, i) => {
+            const _width = scale(e.size.width);
+            const inputRange = [(i - 1) * _width, i * _width, (i + 1) * _width];
+            const animatedStyles = useAnimatedStyle(() => {
+              return {
+                backgroundColor: interpolateColor(scrollX.value, inputRange, [
+                  '#CCC',
+                  '#3897F0',
+                  '#CCC',
+                ]),
+              };
+            });
+            return (
+              <Animated.View
+                key={`MEDIA_${i}`}
+                style={[styles.dot, animatedStyles]}
+              />
+            );
+          })}
+        </View>
+      </View>
+
+      <View style={{ paddingHorizontal: 15 }}>
+        <View style={styles.actionsBar}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image
+              style={{
+                width: scale(24),
+                height: scale(21),
+                resizeMode: 'contain',
+                marginRight: scale(17),
+              }}
+              source={require('src/assets/icons/LikeIcon.png')}
+            />
+            <Image
+              style={{
+                width: scale(22),
+                height: scale(23),
+                resizeMode: 'contain',
+                marginRight: scale(17),
+              }}
+              source={require('src/assets/icons/CommentIcon.png')}
+            />
+            <Image
+              style={{
+                width: scale(23),
+                height: scale(20),
+                resizeMode: 'contain',
+              }}
+              source={require('src/assets/icons/MessagerIcon.png')}
+            />
+          </View>
+
+          <Image
+            style={{
+              width: scale(21),
+              height: scale(24),
+              resizeMode: 'contain',
+            }}
+            source={require('src/assets/icons/SaveIcon.png')}
+          />
+        </View>
+
+        <View style={styles.likesContainer}>
+          <Image
+            style={styles.likeImage}
+            source={{
+              uri: 'https://images.unsplash.com/photo-1645504812848-29c2ebd5cd54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+            }}
+          />
+          <Text style={{ fontSize: scale(13), color: '#262626' }}>
+            Liked by <Text style={{ fontWeight: 'bold' }}>craig_love</Text> and{' '}
+            <Text style={{ fontWeight: 'bold' }}>44,686 others</Text>
+          </Text>
+        </View>
+
+        <Text style={styles.description}>
+          <Text style={styles.descriptionUsername}>{POST.user.username} </Text>
+          {POST.description}
+        </Text>
+
+        <Text
+          style={{
+            fontSize: scale(12),
+            color: 'rgba(0,0,0,0.4)',
+          }}>
+          2d ago
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+export default Post;
