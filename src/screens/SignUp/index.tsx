@@ -1,5 +1,5 @@
-import {ScreenProps} from '@app/@types/navigation';
-import {scale} from '@app/utils';
+import {ScreenProps} from 'src/@types/navigation';
+import {scale} from 'src/utils';
 import * as React from 'react';
 import {
   Image,
@@ -41,7 +41,7 @@ const SignUpScreen = (props: ScreenProps<RootNavigatorParmsList, 'SignUp'>) => {
           height: scale(49),
           resizeMode: 'contain',
         }}
-        source={require('@app/assets/images/InstagramLogo.png')}
+        source={require('src/assets/images/InstagramLogo.png')}
       />
 
       <View style={styles.body}>

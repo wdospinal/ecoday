@@ -1,37 +1,30 @@
-import {ScreenProps} from '@app/@types/navigation';
 import * as React from 'react';
+
+import {BlurView} from '@react-native-community/blur';
 import {
   Dimensions,
   Image,
   Pressable,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
-import {BlurView, VibrancyView} from '@react-native-community/blur';
 import {Modalize} from 'react-native-modalize';
-import {
-  GiphyContent,
-  GiphyGridView,
-  GiphyMedia,
-  GiphyMediaType,
-  GiphySDK,
-} from '@giphy/react-native-sdk';
-import Sticker from './auxilars/Sticker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {ScreenProps} from 'src/@types/navigation';
 
-GiphySDK.configure({apiKey: 'Pcd3LK0AaX4BovN4QACz3MI0fao6vn0J'});
+import Sticker from './auxilars/Sticker';
 
-const {width, height} = Dimensions.get('window');
+const {height} = Dimensions.get('window');
 
-interface StoryCreatorScreenProps
-  extends ScreenProps<RootNavigatorParmsList, 'StoryCreator'> {}
+type StoryCreatorScreenProps = ScreenProps<
+  RootNavigatorParmsList,
+  'StoryCreator'
+>;
 
 const StoryCreatorScreen = (props: StoryCreatorScreenProps) => {
   const modalizeRef = React.useRef<Modalize>(null);
   const [searchQuery, setSearchQuery] = React.useState<string>('');
-  const [media, setMedia] = React.useState<Array<GiphyMedia>>([]);
   const insets = useSafeAreaInsets();
   const onOpen = () => {
     modalizeRef.current?.open();
@@ -66,7 +59,7 @@ const StoryCreatorScreen = (props: StoryCreatorScreenProps) => {
               height: 20,
               tintColor: 'white',
             }}
-            source={require('@app/assets/icons/BackIcon.png')}
+            source={require('src/assets/icons/BackIcon.png')}
           />
         </Pressable>
 
@@ -84,7 +77,7 @@ const StoryCreatorScreen = (props: StoryCreatorScreenProps) => {
               width: 35,
               height: 30,
             }}
-            source={require('@app/assets/icons/StickerIcon.png')}
+            source={require('src/assets/icons/StickerIcon.png')}
           />
         </Pressable>
 
@@ -130,7 +123,7 @@ const StoryCreatorScreen = (props: StoryCreatorScreenProps) => {
               alignItems: 'center',
             }}>
             <Image
-              source={require('@app/assets/icons/SearchIcon.png')}
+              source={require('src/assets/icons/SearchIcon.png')}
               style={{
                 tintColor: 'white',
                 width: 16,
@@ -149,25 +142,6 @@ const StoryCreatorScreen = (props: StoryCreatorScreenProps) => {
               }}
             />
           </View>
-          <GiphyGridView
-            content={
-              searchQuery
-                ? GiphyContent.search({
-                    searchQuery: searchQuery,
-                    mediaType: GiphyMediaType.Sticker,
-                  })
-                : GiphyContent.trendingStickers()
-            }
-            cellPadding={3}
-            style={{
-              height: height * 0.8 - 34,
-              marginTop: 24,
-            }}
-            onMediaSelect={e => {
-              setMedia([...media, e.nativeEvent.media]);
-              onClose();
-            }}
-          />
         </View>
       </Modalize>
     </>

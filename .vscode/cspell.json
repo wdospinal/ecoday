@@ -1,0 +1,41 @@
+{
+  "version": "0.2",
+  "language": "en-US",
+  "flagWords": ["hte"],
+  "ignorePaths": [
+    ".git",
+    ".gitignore",
+    ".vscodeignore",
+    "*.lock",
+    "*.log",
+    "*.vsix",
+    "**/__snapshots__/**",
+    "**/server.js",
+    "cSpell.json",
+    "fixtures/workspaces/**",
+    "languageCodes.ts",
+    "package-lock.json",
+    "packages/_server/sampleSourceFiles/**",
+    "packages/client/resources/**",
+    "packages/client/samples/**",
+    "packages/client/server/**",
+    "packages/client/settingsViewer/**",
+    "/samples",
+    "testFixtures"
+  ],
+  "ignoreWords": ["dollaride", "Sutphin", "luxon", "Modalize", "Pressable"],
+  "dictionaryDefinitions": [
+    {
+      "name": "cities",
+      "path": "./sampleDictionaries/cities.txt"
+    },
+    {
+      "name": "cspell-words",
+      "addWords": true,
+      "scope": ["workspace"],
+      "path": "./cspell-words.txt"
+    }
+  ],
+  "dictionaries": ["cities", "cspell-words"],
+  "useGitignore": true
+}

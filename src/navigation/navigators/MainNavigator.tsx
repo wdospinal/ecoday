@@ -1,60 +1,75 @@
+/* eslint-disable global-require */
+/* eslint-disable default-case */
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '@app/screens/Home';
-import SearchScreen from '@app/screens/Search';
-import ProfileScreen from '@app/screens/Profile';
-import Header from '@app/components/Header';
-import CreatePostScreen from '@app/screens/CreatePost';
-import {Image, StyleSheet, View} from 'react-native';
-import {scale} from '@app/utils';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image, StyleSheet, View } from 'react-native';
+
+import Header from 'src/components/Header';
+import CreatePostScreen from 'src/screens/CreatePost';
+import HomeScreen from 'src/screens/Home';
+import ProfileScreen from 'src/screens/Profile';
+import SearchScreen from 'src/screens/Search';
+import { scale } from 'src/utils';
 
 const Tab = createBottomTabNavigator();
 
-export default function MainNavigator() {
+const styles = StyleSheet.create({
+  icon: {
+    width: scale(22),
+    height: scale(24),
+    resizeMode: 'contain',
+  },
+  tabBarBackground: {
+    backgroundColor: 'rgba(250,250,250,0.01)',
+  },
+});
+const MainNavigator = (): JSX.Element => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => {
+      screenOptions={({ route }) => {
         return {
           header: () => <Header />,
-          tabBarIcon: ({focused}) => {
+          tabBarIcon: ({ focused }) => {
             switch (route.name) {
               case 'Home':
                 if (focused) {
                   return (
                     <Image
                       style={styles.icon}
-                      source={require('@app/assets/icons/HomeSelectedIcon.png')}
-                    />
-                  );
-                } else {
-                  return (
-                    <Image
-                      style={styles.icon}
-                      source={require('@app/assets/icons/HomeIcon.png')}
+                      source={require('src/assets/icons/HomeSelectedIcon.png')}
                     />
                   );
                 }
+                return (
+                  <Image
+                    style={styles.icon}
+                    source={require('src/assets/icons/HomeIcon.png')}
+                  />
+                );
+
               case 'Search':
                 if (focused) {
                   return (
                     <Image
                       style={styles.icon}
-                      source={require('@app/assets/icons/SearchSelectedIcon.png')}
-                    />
-                  );
-                } else {
-                  return (
-                    <Image
-                      style={styles.icon}
-                      source={require('@app/assets/icons/SearchIcon.png')}
+                      source={require('src/assets/icons/SearchSelectedIcon.png')}
                     />
                   );
                 }
+                return (
+                  <Image
+                    style={styles.icon}
+                    source={require('src/assets/icons/SearchIcon.png')}
+                  />
+                );
+
               case 'Create Post':
                 return (
                   <Image
                     style={styles.icon}
-                    source={require('@app/assets/icons/CreatePostIcon.png')}
+                    source={require('src/assets/icons/CreatePostIcon.png')}
                   />
                 );
               case 'Market':
@@ -62,34 +77,41 @@ export default function MainNavigator() {
                   return (
                     <Image
                       style={styles.icon}
-                      source={require('@app/assets/icons/NotificationsSelectedIcon.png')}
-                    />
-                  );
-                } else {
-                  return (
-                    <Image
-                      style={styles.icon}
-                      source={require('@app/assets/icons/NotificationsIcon.png')}
+                      source={require('src/assets/icons/NotificationsSelectedIcon.png')}
                     />
                   );
                 }
+                return (
+                  <Image
+                    style={styles.icon}
+                    source={require('src/assets/icons/NotificationsIcon.png')}
+                  />
+                );
+
               case 'Profile':
                 if (focused) {
                   return (
                     <Image
                       style={styles.icon}
-                      source={require('@app/assets/icons/ProfileSelectedIcon.png')}
-                    />
-                  );
-                } else {
-                  return (
-                    <Image
-                      style={styles.icon}
-                      source={require('@app/assets/icons/ProfileIcon.png')}
+                      source={require('src/assets/icons/ProfileSelectedIcon.png')}
                     />
                   );
                 }
+                break;
+              default:
+                return (
+                  <Image
+                    style={styles.icon}
+                    source={require('src/assets/icons/ProfileIcon.png')}
+                  />
+                );
             }
+            return (
+              <Image
+                style={styles.icon}
+                source={require('src/assets/icons/ProfileIcon.png')}
+              />
+            );
           },
           tabBarShowLabel: false,
           tabBarBackground: () => <View style={styles.tabBarBackground} />,
@@ -106,15 +128,5 @@ export default function MainNavigator() {
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
-}
-
-const styles = StyleSheet.create({
-  icon: {
-    width: scale(22),
-    height: scale(24),
-    resizeMode: 'contain',
-  },
-  tabBarBackground: {
-    backgroundColor: 'rgba(250,250,250,0.01)',
-  },
-});
+};
+export default MainNavigator;

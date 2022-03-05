@@ -1,4 +1,4 @@
-import {ScreenProps} from '@app/@types/navigation';
+import {ScreenProps} from 'src/@types/navigation';
 import * as React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 

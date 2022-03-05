@@ -1,4 +1,4 @@
-import {scale} from '@app/utils';
+import {scale} from 'src/utils';
 import * as React from 'react';
 import {
   Image,
@@ -82,7 +82,7 @@ const Post = (props: Post) => {
               {POST.user.isVerified && (
                 <Image
                   style={styles.verifyIcon}
-                  source={require('@app/assets/icons/OfficialAccountIcon.png')}
+                  source={require('src/assets/icons/OfficialAccountIcon.png')}
                 />
               )}
             </View>
@@ -97,7 +97,7 @@ const Post = (props: Post) => {
         <Pressable style={styles.optionsButton}>
           <Image
             style={styles.optionsIcon}
-            source={require('@app/assets/icons/OptionsIcon.png')}
+            source={require('src/assets/icons/OptionsIcon.png')}
           />
         </Pressable>
       </View>
@@ -155,7 +155,7 @@ const Post = (props: Post) => {
                 resizeMode: 'contain',
                 marginRight: scale(17),
               }}
-              source={require('@app/assets/icons/LikeIcon.png')}
+              source={require('src/assets/icons/LikeIcon.png')}
             />
             <Image
               style={{
@@ -164,7 +164,7 @@ const Post = (props: Post) => {
                 resizeMode: 'contain',
                 marginRight: scale(17),
               }}
-              source={require('@app/assets/icons/CommentIcon.png')}
+              source={require('src/assets/icons/CommentIcon.png')}
             />
             <Image
               style={{
@@ -172,7 +172,7 @@ const Post = (props: Post) => {
                 height: scale(20),
                 resizeMode: 'contain',
               }}
-              source={require('@app/assets/icons/MessangerIcon.png')}
+              source={require('src/assets/icons/MessangerIcon.png')}
             />
           </View>
 
@@ -182,7 +182,7 @@ const Post = (props: Post) => {
               height: scale(24),
               resizeMode: 'contain',
             }}
-            source={require('@app/assets/icons/SaveIcon.png')}
+            source={require('src/assets/icons/SaveIcon.png')}
           />
         </View>
 

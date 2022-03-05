@@ -1,4 +1,4 @@
-import {scale} from '@app/utils';
+import {scale} from 'src/utils';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {
@@ -34,12 +34,12 @@ const Header = (props: HeaderProps) => {
         onPress={() => navigation.navigate('StoryCreator')}>
         <Image
           style={[styles.icon]}
-          source={require('@app/assets/icons/CameraIcon.png')}
+          source={require('src/assets/icons/CameraIcon.png')}
         />
       </Pressable>
       <Image
         style={styles.logo}
-        source={require('@app/assets/images/InstagramLogo.png')}
+        source={require('src/assets/images/InstagramLogo.png')}
       />
       <View
         style={{
@@ -51,13 +51,13 @@ const Header = (props: HeaderProps) => {
         }}>
         <Image
           style={[styles.icon, {marginRight: scale(18)}]}
-          source={require('@app/assets/icons/IGTVIcon.png')}
+          source={require('src/assets/icons/IGTVIcon.png')}
         />
 
         <Pressable onPress={FirebaseAuth().signOut}>
           <Image
             style={styles.icon}
-            source={require('@app/assets/icons/MessangerIcon.png')}
+            source={require('src/assets/icons/MessangerIcon.png')}
           />
         </Pressable>
       </View>

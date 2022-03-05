@@ -1,6 +1,6 @@
-import {ScreenProps} from '@app/@types/navigation';
-import Post from '@app/components/Post';
-import StoriesSlider from '@app/components/StoriesSlider';
+import {ScreenProps} from 'src/@types/navigation';
+import Post from 'src/components/Post';
+import StoriesSlider from 'src/components/StoriesSlider';
 import * as React from 'react';
 import {
   FlatList,

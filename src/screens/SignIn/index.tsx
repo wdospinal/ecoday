@@ -1,5 +1,5 @@
-import {ScreenProps} from '@app/@types/navigation';
-import {scale} from '@app/utils';
+import {ScreenProps} from 'src/@types/navigation';
+import {scale} from 'src/utils';
 import * as React from 'react';
 import {
   Image,
@@ -37,7 +37,7 @@ const SignInScreen = (props: ScreenProps<RootNavigatorParmsList, 'SignIn'>) => {
             width: scale(20),
             height: scale(20),
           }}
-          source={require('@app/assets/icons/BackIcon.png')}
+          source={require('src/assets/icons/BackIcon.png')}
         />
       </Pressable>
 
@@ -47,7 +47,7 @@ const SignInScreen = (props: ScreenProps<RootNavigatorParmsList, 'SignIn'>) => {
           height: scale(49),
           resizeMode: 'contain',
         }}
-        source={require('@app/assets/images/InstagramLogo.png')}
+        source={require('src/assets/images/InstagramLogo.png')}
       />
 
       <View style={styles.body}>

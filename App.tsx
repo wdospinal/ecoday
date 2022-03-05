@@ -1,4 +1,4 @@
-import Navigation from '@app/navigation';
+import Navigation from 'src/navigation';
 import React from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {LogBox} from 'react-native';
