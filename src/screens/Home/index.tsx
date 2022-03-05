@@ -91,8 +91,8 @@ const HomeScreen = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.tons}>5,92</Text>
-        <Text style={styles.tonsE}>Toneladas C02e</Text>
+        <Text style={styles.tons}>22</Text>
+        <Text style={styles.tonsE}>Arboles al día</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.button} onPress={navigateReward}>
